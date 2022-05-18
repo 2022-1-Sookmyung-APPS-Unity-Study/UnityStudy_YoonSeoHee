@@ -8,7 +8,9 @@ public class Player : MonoBehaviour
     private float input;
 
     Rigidbody2D rb;
-    Animator anim;
+    private Animator anim;
+
+    public int health;
 
     // Start is called before the first frame update
     void Start()
@@ -48,5 +50,15 @@ public class Player : MonoBehaviour
 
         // Moving player
         rb.velocity = new Vector2(input * speed, rb.velocity.y);
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        health -= damageAmount;
+
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
